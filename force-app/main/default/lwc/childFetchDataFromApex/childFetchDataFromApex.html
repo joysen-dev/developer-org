@@ -1,0 +1,9 @@
+<template>
+    <template if:true={contact}>
+        <lightning-card title={contact.Name} class="card">
+            <p class="slds-p-horizontal_small">Email : {contact.Email}</p>
+            <p class="slds-p-horizontal_small">Phone : {contact.Phone}</p>
+            <p class="slds-p-horizontal_small">Salary : {contact.Salary__c}</p>
+        </lightning-card>
+    </template>
+</template>

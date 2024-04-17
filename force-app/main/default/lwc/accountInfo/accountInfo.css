@@ -1,0 +1,32 @@
+h1{
+    font-size: 22px;
+}
+.wrapper{
+    padding: 20px;
+}
+.name{
+    color: rgb(58, 0, 144);
+}
+ /* Tooltip code  */
+ .tooltipbox{
+    position: relative;
+ }
+ .tooltip{
+    position: absolute;
+    left: -300px;
+    top: 0;
+    width: 300px;
+    background-color: #fff;
+    transition: 0.3s;
+    display: none;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+ }
+ .tooltipbox:hover  .tooltip{
+    display: block;
+ }
+ .mt{
+    margin-top: 10px;
+ }

@@ -1,0 +1,17 @@
+.input{
+    width: 100%;
+    margin: 10px 5px;
+}
+input{
+    width: 98%;
+    padding: 5px;
+}
+button{
+    margin: 10px;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}

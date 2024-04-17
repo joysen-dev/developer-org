@@ -1,0 +1,15 @@
+<template>
+    <div class="card">
+        <div class="slds-grid slds-gutters">
+            <div if:true={name} class="slds-col">
+                <p>Record Name : {name}</p>
+            </div>
+            <div class="slds-col">
+                <p>Stage Name : {stageName}</p>
+            </div>
+          </div>
+          <div>
+              <lightning-input style="color: #000;" label="Record Name" type="text" value={name} onchange={handleChange}></lightning-input>
+            </div>
+        </div>
+</template>

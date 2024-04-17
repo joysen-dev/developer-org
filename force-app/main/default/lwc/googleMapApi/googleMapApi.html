@@ -1,0 +1,39 @@
+<template>
+    
+    <lightning-spinner if:true={isLoading} alternative-text="Loading" size="Medium"></lightning-spinner>
+
+    <!-- Google Map Marker's based on Lead Value -->
+    <lightning-card title="Lead Map">
+
+        <div class="slds-p-around_medium">
+            <lightning-combobox
+                name="List View Selector"
+                label="Select a List View"
+                value={value}
+                placeholder="Select List View"
+                options={options}
+                onchange={handleListViewChange} >
+            </lightning-combobox>
+        </div>
+
+
+
+        <div class="map">
+            <div class="modal" if:true={showModal}>
+                <div>
+                    Quick Link <br>
+                    <a href={leadLink} target="_blank">Go to Lead</a>   
+                </div>
+                <button class="cross-button" onclick={handleModalCross}>X</button>
+            </div>
+            <lightning-map
+            map-markers={mapMarkers}
+            markers-title="Lead Data"
+            onmarkerselect={handleMarkerSelect}
+            selected-marker-value={selectedMarkerValue}
+            >
+            </lightning-map>
+        </div>
+    </lightning-card>
+
+</template>

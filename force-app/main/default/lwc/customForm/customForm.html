@@ -1,0 +1,24 @@
+<template>
+
+    <lightning-card>
+        <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="large"></lightning-spinner>
+        <form onsubmit={handleSubmit}>
+            
+            <div class="input">
+                <label for="">Enter Your First Name</label>
+                <input class="firstName" name="firstName" placeholder="FistName"></input>
+            </div>
+            <div class="input">
+                <label for="">Enter Your Last Name</label>
+                <input class="lastName" name="lastName" placeholder="Your last name"></input>
+            </div>
+            <div class="input">
+                <label for="">Enter Your Company Name</label>
+                <input class="company" name="company" placeholder="Your Company name"></input>
+            </div>
+              <button type="submit" class="button">Submit </button>
+            
+          </form>
+    </lightning-card>
+    
+</template>

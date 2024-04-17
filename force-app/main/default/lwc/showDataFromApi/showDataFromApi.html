@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Data Form API" icon-name="standard:contact">
+        <template for:each={reqData} for:item="data">
+            <div key={data} style="padding: 5px; border-radius: 5px; margin: 14px 16px; box-shadow: 2px 2px 3px 2px #eee">
+                Id : {data.rxcui} <br>
+                Name : {data.name} <br>
+                Strength : {data.strength} <br>
+                Route : {data.route} <br>
+            </div>
+        </template>
+    </lightning-card>
+</template>

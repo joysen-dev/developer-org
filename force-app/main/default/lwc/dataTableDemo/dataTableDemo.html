@@ -1,0 +1,8 @@
+<template>
+    <div class="container">
+        <lightning-datatable key-field='id' data={data} columns={columns}></lightning-datatable>
+        <div if:true={errorMsg} style="color: red;">
+            {errorMsg}
+        </div>
+    </div>
+</template>

@@ -1,0 +1,11 @@
+<template>
+    <div style="background-color: #fff; padding: 0px 20px;">
+        <h1 style="text-align: center; padding-top: 20px; font-size: 26px">Related Contacts</h1>
+        <template if:false={contacts.data}>
+            <h2>No Related Contacts Found</h2>
+        </template>
+        <template for:each={contacts.data} for:item="contact">
+            <c-child-fetch-data-from-apex key={contact.Id} contact={contact} ></c-child-Fetch-Data-From-Apex>
+        </template>
+    </div>
+</template>

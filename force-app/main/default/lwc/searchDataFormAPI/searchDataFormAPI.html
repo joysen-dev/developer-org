@@ -1,0 +1,48 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Searched Products" icon-name="standard:account">
+        <div class="row">
+            <template for:each={products} for:item="product">
+                <div class="column" key={product}>
+                    <div class="card">
+                        <div class="img">
+                            <img src={product.image} alt={product.title}>
+                        </div>
+                        <div class="details">
+                            <div class="text">
+                                Product Title : <b>{product.title}</b> <br>
+                            </div>
+                            <div class="text">
+                                Price : <strong>{product.price}</strong>
+                            </div>
+                        </div>
+                        <div class="tooltip">
+                            <img src={product.image} alt={product.title}>
+                            <div class="details">
+                                <p class="text">
+                                    Product Title : <b>{product.title}</b> <br>
+                                </p>
+                                <p class="text">
+                                    Price : <strong>{product.price}</strong>
+                                </p>
+                                <div class="description">
+                                    <span class="text">Descripton : </span>
+                                    {product.description}
+                                </div>
+                                <p class="text">
+                                    Category : {product.category}
+                                    Rating : <b>{product.rating.rate}</b> <br>
+                                    Rating Count : <b>{product.rating.count}</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template if:true={porductNull}>
+                <div class="text">
+                    No Data Found .....
+                </div>
+            </template>
+            </div>
+    </lightning-card>
+</template>

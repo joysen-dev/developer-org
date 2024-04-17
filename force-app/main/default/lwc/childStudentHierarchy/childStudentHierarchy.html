@@ -1,0 +1,13 @@
+<template>
+    <div if:true={student}>
+        <button class="button" onclick={handleClick} data-key={student.Id}>{student.Name}</button>
+        <div class="custom-card" data-id={student.Id}>
+            <lightning-icon icon-name="utility:connected_apps" alternative-text="Connected" size="large" title="large size">
+            </lightning-icon>
+            <span class="header">Name : {student.Name}</span>
+            <p>Roll : {student.Roll__c}</p>
+            <p>Subject : {student.Subject__c}</p>
+            <p>Email : {student.Email__c}</p>
+        </div>
+    </div>
+</template>

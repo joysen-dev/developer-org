@@ -1,0 +1,44 @@
+<template>
+
+    <lightning-card title="Send Whatschat Bulk Message">
+        <div class="slds-p-around_medium">
+            <lightning-combobox
+                name="List View Selector"
+                label="Select a List View"
+                value={value}
+                placeholder="Select List View"
+                options={options}
+                onchange={handleListViewChange} >
+            </lightning-combobox>
+        </div>
+
+
+        <div class="data-table-container">
+            <h1>Select Records for Send Message</h1>
+            <lightning-spinner 
+              alternative-text="Loading" 
+              size="large"
+              variant="base"
+              if:true={isLoading}>
+            </lightning-spinner>
+
+            <div class="data-table" if:false={isLoading}>
+                <lightning-datatable
+                        key-field="id"
+                        data={data}
+                        columns={columns}
+                        onrowselection={getSelectedName}>
+                </lightning-datatable>
+            </div>
+        </div>
+
+        <div class="message-box" if:false={isLoading}>
+            <form id="message-form" onsubmit={handleFormSubmit}>
+                <textarea class="sendMessage" name="message" id="message" cols="30" rows="5"></textarea>
+                <button type="submit" class="btn">Send Bulk Message</button>
+            </form>
+        </div>
+
+    </lightning-card>
+    
+</template>

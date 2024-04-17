@@ -1,0 +1,19 @@
+<template>
+    <div class="main">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <img src={productdetails.image} />
+            </div>
+            <div class="slds-col slds-size_2-of-3 right-side">
+                <h2>{productdetails.title}</h2>
+                <p class="desc">
+                    {productdetails.desc}
+                </p>
+                <div class="additionl-info">
+                    <p>Price : ${productdetails.price}</p>
+                    <p>Rating : {productdetails.rating}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

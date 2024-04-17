@@ -1,0 +1,12 @@
+<template>
+        <!-- Making Record contact form  -->
+        <lightning-card>
+            <div class="exampleHolder" if:true={spinner}>
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </div>
+
+            <lightning-record-form onsubmit={handleSubmit} columns="2" object-api-name="Contact" fields={contactFields}>
+            
+            </lightning-record-form>
+        </lightning-card>
+</template>

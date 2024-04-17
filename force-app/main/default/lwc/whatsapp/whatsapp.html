@@ -1,0 +1,43 @@
+<template>
+  <div class="center">
+      <div class="chat">
+        <lightning-spinner if:true={isLoading} alternative-text="Loading" size="Medium"></lightning-spinner>
+        <div class="contact bar">
+          <div class="name incoming">
+            {Name}
+          </div>
+        </div>
+        <div class="messages" id="chat">
+
+          <template for:each={data} for:item="currentItem" for:index="index">
+              <div if:true={currentItem.Incoming__c} class="message incoming" key={currentItem.Id}>{currentItem.Message__c}</div>
+              <div if:false={currentItem.Incoming__c} class="message outgoing" key={currentItem.Id}>{currentItem.Message__c}</div>
+          </template>
+
+          <!-- <lightning-formatted-rich-text value={data}></lightning-formatted-rich-text> -->
+        </div>
+        <div class="input">
+          <form id="smsForm" class="container" onsubmit={sendSMS}>
+            <div class="input-container">
+              <textarea class="sendMessage" name="sendMessage" placeholder="Type your message here" rows="1"></textarea>
+              <button type="submit">Send </button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- <lightning-card title="Send Whatsapp SMS">
+        <form id="smsForm" class="container" onsubmit={sendSMS}> -->
+            <!-- <label for="recipient">Recipient Phone Number:</label>
+            <input type="tel" value="01988631912" class="recipient" name="recipient" placeholder="Enter phone number" required> -->
+        
+            <!-- <label for="message">Message:</label>
+            <textarea class="message" name="message" placeholder="Type your message here" rows="4"></textarea>
+        
+            <button type="submit">Send SMS</button>
+          </form>
+    </lightning-card> -->
+    
+</template>

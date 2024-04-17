@@ -1,0 +1,20 @@
+<template>
+
+    <lightning-card>
+    <div class="container">
+        
+        <div class="product-details">
+            <template if:true={showProductDetails}>
+                <c-product-details-modal productdetails={ProductDetails}></c-product-details-modal>
+            </template>
+        </div>
+
+        <div class="child-component">
+            <template for:each={response} for:item='item'>
+                <c-child-component key={item.id} image={item.image} title={item.title} desc={item.description} price={item.price} rating={item.rating.rate} onseemore={handleProductDetails}></c-child-component>
+            </template>
+        </div>
+    </div>
+    </lightning-card>
+    
+</template>
