@@ -34,6 +34,14 @@
 	</types>
 	<types>
 		<members>*</members>
+		<name>Flow</name>
+	</types>
+	<types>
+		<members>Create_Case_For_Contact</members>
+		<name>FlowDefinition</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>

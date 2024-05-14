@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>Closed_Lost_Assign</name>
+        <label>Closed Lost Assign</label>
+        <locationX>528</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunityLoop.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Opportunity is closed Lost</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OpportunityRecordAssignment</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Closed_Won_Assign</name>
+        <label>Closed Won Assign</label>
+        <locationX>264</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunityLoop.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Opportunity is closed Won</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OpportunityRecordAssignment</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Open_Assign</name>
+        <label>Open Assign</label>
+        <locationX>792</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunityLoop.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Opportunity is Open</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OpportunityRecordAssignment</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>OpportunityRecordAssignment</name>
+        <label>OpportunityRecordAssignment</label>
+        <locationX>528</locationX>
+        <locationY>650</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunityRecord</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>OpportunityLoop</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OpportunityLoop</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Assignment_Based_on_Condition</name>
+        <label>Assignment Based on Condition</label>
+        <locationX>528</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Open_Assign</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Open</defaultConnectorLabel>
+        <rules>
+            <name>ClosedWon</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>OpportunityLoop.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Won_Assign</targetReference>
+            </connector>
+            <label>Closed Won</label>
+        </rules>
+        <rules>
+            <name>ClosedLost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>OpportunityLoop.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Lost_Assign</targetReference>
+            </connector>
+            <label>Closed Lost</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>date</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Flow.CurrentDateTime} - 7</expression>
+    </formulas>
+    <interviewLabel>Get last 7 days opportunity and update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get last 7 days opportunity and update Opportunity</label>
+    <loops>
+        <name>OpportunityLoop</name>
+        <label>Opportunity Loop</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <collectionReference>Get_Last_7_days_Opportunity</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assignment_Based_on_Condition</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Opportnity</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Last_7_days_Opportunity</name>
+        <label>Get Last 7 days Opportunity</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>OpportunityLoop</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <elementReference>date</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Opportnity</name>
+        <label>Update Opportnity</label>
+        <locationX>176</locationX>
+        <locationY>842</locationY>
+        <inputReference>OpportunityRecord</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Last_7_days_Opportunity</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>OpportunityRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+</Flow>
