@@ -1,69 +1,49 @@
 import { LightningElement, api } from 'lwc';
 import retriveStageFromOpportunity from '@salesforce/apex/AccountInfoController.getStageFromOpportunity';
+import addUser from '@salesforce/apex/APICallout.addUser';
 
 export default class AccountInfo extends LightningElement {
 
-    @api recordId;
+    handleSubmit(){
+        let data = {
+            email:'John@gmail.com',
+            username:'johnd',
+            password:'m38rmF$',
+            name:{
+                firstname:'John',
+                lastname:'Doe'
+            },
+            address:{
+                city:'kilcoole',
+                street:'7835 new road',
+                homenumber:3,
+                zipcode:'12926-3874',
+                geolocation:{
+                    latitude:'-37.3159',
+                    longitude:'81.1496'
+                }
+            },
+            phone:'1-570-236-7033',
+        }
 
-    // Record Contact Form 
-    contactFields = ['FirstName', 'LastName', 'Description', 'LeadSource'];
 
-
-
-
-
-
-
-
-
-
-    //  Codes For Get Data Form Apex
-    toggler = true;
-    data = {};
-    // connectedCallback(){
-    //     console.log('Record Id of this opportunity ; ', this.recordId);
-    //     // this.toggler = false;
-    //     this.retriveStageDataFromOpportunity(this.recordId);
-    // }
-    async retriveStageDataFromOpportunity(recordId){
-        return await retriveStageFromOpportunity({recordId: recordId})
+        addUser({data: JSON.stringify(data)})
         .then(res => {
-            this.data = res;
-            console.log('Response From Server in Async : ',res);
-            // return res; 
+            console.log('Result -> ', res)
+        }).catch(error => {
+            console.error('Error -> ', error)
         })
-        .catch( err => {console.error(err)});
     }
 
 
 
-    // Code For Toggler 
-    name = 'Joy Sen';
 
-    joyDesc = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perferendis impedit voluptates nisi sint temporibus beatae quaerat rerum facere corrupti. Inventore enim porro similique officia quod hic repudiandae mollitia vero?';
-    
-    rahiDesc = 'consectetur adipisicing elit. Enim dolore tempore quas voluptatem, eum doloremque laboriosam saepe repudiandae unde fugiat, totam cum possimus error minus nihil eaque nobis! Impedit obcaecati ad, harum commodi fugit cupiditate neque facilis quidem provident odio!';
-    
-    // desc = this.joyDesc;
-    
-    fruits = ["Apple", "Orange", "Mango", "Banana", "Guava", "Pineapple"];
-    count = false;
 
-    startToggling() {
-        if(this.count) return;
 
-        this.toggler = !this.toggler;
-        this.name = this.toggler === false ? 'Rahi Vai' : 'Joy Sen';
-        
-        setTimeout(()=>{
-            this.startToggling();
-        }, 1000);
 
-        // this.desc = this.toggler === false ? this.rahiDesc : this.joyDesc;
-    }
 
-    stopToggling(){
-        this.count = true;
-        this.startToggling();
-    }
+
+
+
+
 }

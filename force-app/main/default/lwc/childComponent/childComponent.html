@@ -1,11 +1,13 @@
 <template>
-        <div class="product-card">
-                <img src={image} alt={title}>
-                <div class="info">
-                  <h3>{title}</h3>
-                  <p class="price">${price}</p>
-                  <p class="details">{desc}</p>
-                  <button class="btn" onclick={handleSeeMore}>See More</button>
-                </div>
+    <div>
+        <div class="card h-100">
+            <img class="card-img-top" src={image} alt={title}>
+            <div class="card-body">
+                <h5 class="card-title">{title}</h5>
+                <p class="card-text">${price}</p>
+                <p class="card-text">{desc}</p>
+                <button class="btn btn-primary" onclick={handleSeeMore}>See More</button>
+            </div>
         </div>
+    </div>
 </template>

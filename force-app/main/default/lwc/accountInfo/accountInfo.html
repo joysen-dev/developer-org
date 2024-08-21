@@ -1,38 +1,5 @@
 <template>
     <lightning-card>
-        <!-- <div class='wrapper'> 
-            <h1>Hello <span class="name">{name}</span> </h1>
-            <div if:true={toggler} style="padding: 5px; background-color: #ca9bbe6f;">{joyDesc}</div>
-            <div if:false={toggler} style="padding: 5px; background-color: #68ece1;">{rahiDesc}</div>
-
-            <p if:true={data}> This is the RecordID : {recordId}</p>
-            <h1 class="name" if:true={data}>Opportunity Name : {data.Name}</h1>
-            <button style="margin-top: 10px;" onclick={startToggling} class="slds-button slds-button_brand">Change Name</button>
-            <button style="margin-top: 10px;" onclick={stopToggling} class="slds-button slds-button_destructive">Stop</button>
-        </div> -->
+        <button onclick={handleSubmit}>Submit</button>
     </lightning-card>
-
-
-    <!-- Making Record contact form  -->
-    <lightning-card>
-        <lightning-record-form object-api-name="Contact" fields={contactFields}>
-        
-        </lightning-record-form>
-    </lightning-card>
-    
-
-    <!-- <lightning-card class="mt">
-        <div class="wrapper">
-            <div class="tooltipbox">
-                <a class="tooltip-title">Hover Over ME</a>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa delectus excepturi soluta qui iste aliquid.</p>
-                <div class="tooltip">
-                    <h1>Card Title</h1>
-                    <p>This is Card Title</p>
-                    <h1>Description</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ab fugit natus illo rem aliquam, impedit enim perspiciatis asperiores molestiae.</p>
-                </div>
-            </div>
-        </div>
-    </lightning-card> -->
 </template>
