@@ -51,4 +51,5 @@ export default class ChildComponent extends LightningElement {
         console.log('selectEvent -> ', selectEvent);
     }
 
+
 }

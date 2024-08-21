@@ -1,6 +1,3 @@
 .child-component{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    background-color: #fff;
+    font: 100;
 }

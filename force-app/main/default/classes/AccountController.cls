@@ -1,5 +1,20 @@
 public with sharing class AccountController {
 
+
+    @AuraEnabled(cacheable=true)
+    public static List<Contact> wireDemo(String recordId){
+        try {
+            List<Contact> cons = [SELECT Name, Phone, Email FROM Contact WHERE AccountId =: recordId];
+            if (cons.size() > 0) {
+                return cons;
+            }
+            return cons;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+
     @InvocableMethod(label='Get Contact' description='' category='Custom Apex')
     public static List<List<Contact>> getContactsRelatedToAccount(List<String> ids){
         
