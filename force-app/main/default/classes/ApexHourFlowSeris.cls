@@ -8,6 +8,7 @@ public class ApexHourFlowSeris {
         
         System.debug('Invocable Method Called');
         System.debug(Opps);
+        System.debug(Opps);
 
     }
 }

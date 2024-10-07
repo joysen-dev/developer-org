@@ -38,7 +38,7 @@ public with sharing class APICallout {
 
     public static String jsonGenerator(){
         JSONGenerator gen = JSON.createGenerator(true);
-        List<String> fruits = new List<String>{'Apple', 'Mango', 'Pineapple', 'Orange'};
+        List<String> fruits = new List<String>{'Apple', 'Mango'};
 
         gen.writeStartObject();
 
